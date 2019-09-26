@@ -21,7 +21,7 @@ def _check_facter():
     '''
     Checks if facter is installed.
     '''
-    salt.utils.check_or_die('facter')
+    salt.utils.path.check_or_die('facter')
 
 
 def facter():
@@ -34,7 +34,7 @@ def facter():
     try:
         # -p: load puppet libraries, for puppet specific facts
         # -j: return json data
-        output = __salt__['cmd.run']('facter -p -j')
+        output = __salt__['cmd.run']('facter --json')
         try:
             facts = json.loads(output)
         except (KeyError, ValueError):

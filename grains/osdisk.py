@@ -29,7 +29,7 @@ def get_osdisk_stats():
                 caption = disk.Caption
                 grains['osdisk'][caption] = {'available': round(available/1.073741824e9), 'used': round(used/1.073741824e9)}
     elif platform.system() == 'Linux':
-        with salt.utils.fopen('/proc/mounts', 'r') as f:
+        with salt.utils.files.fopen('/proc/mounts', 'r') as f:
             mounts = [line.split()[1] for line in f.readlines()]
         for caption in mounts:
             disk = os.statvfs(caption)

@@ -31,7 +31,7 @@ def has_battery():
 
     # We need to have the `acpi` binary installed to avoid having to do the
     # old vs new acpi detection our selves.
-    acpi = salt.utils.which('acpi')
+    acpi = salt.utils.path.which('acpi')
     if acpi is None or acpi == "":
         return {}
 

@@ -31,9 +31,7 @@ def ec2_roles():
     region = metadata['placement']['availability-zone'][:-1]
 
     # Connect to EC2 and get the instance information for this instance id
-    conn = boto.ec2.connect_to_region(region,
-    aws_access_key_id='XXXXXXXXXXXXXXXXXXXX',
-    aws_secret_access_key='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
+    conn = boto.ec2.connect_to_region(region)
     reservation = conn.get_all_reservations(filters={'instance-id': metadata['instance-id']})
 
     # Dump tags from instance. Feel free to add variables here to get other tags.

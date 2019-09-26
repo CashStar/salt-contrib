@@ -2,6 +2,23 @@
 Salt Contrib
 ============
 
+CashStar Notes
+==============
+
+``ln -s /srv/salt-contrib/grains /srv/salt/_grains``
+
+These Ubuntu packages are required:
+``apt install python-boto facter``
+
+These IAM permissions are required (and probably more):
+``ec2:DescribeInstances
+ec2:DescribeTags``
+
+Fixes have been made to work with modern versions of Salt, and to work with IAM Roles.
+
+Introduction
+============
+
 The Salt Contrib is a destination for modules developed by the community.
 Since Salt modules are nearly infinite in application not all of the modules
 developed will be shipped with the main salt application. Salt Contrib will
