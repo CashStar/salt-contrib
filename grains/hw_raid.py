@@ -80,7 +80,8 @@ def raid_info():
 
     if platform.system() == 'Linux':
         try:
-            hwinfo = subprocess.Popen('lspci -m'.split(), stdout=subprocess.PIPE)
+            # text (universal_newlines) needs to be set for Python 3 compatibility in re.search
+            hwinfo = subprocess.Popen('lspci -m'.split(), stdout=subprocess.PIPE, text=True)
 
             for line in hwinfo.stdout.readlines():
                 if re.search('RAID|Serial Attached SCSI', line):
